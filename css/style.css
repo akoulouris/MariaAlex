@@ -1,3 +1,4 @@
 body{
-background-image: url(../images/main-us.jpg) no-repeat;
+background: url(../images/main-us.jpg) no-repeat;
+background-size: cover;
 }
