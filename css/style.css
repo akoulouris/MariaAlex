@@ -1,3 +1,7 @@
 body{
 background-image: url(../images/main-us.jpg) no-repeat;
+height: max-content;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
 }
