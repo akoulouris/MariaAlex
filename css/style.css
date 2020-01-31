@@ -1,6 +1,13 @@
 .Header{
 background: url(../images/main-us2.jpg) no-repeat;
+float: left;
+width: 100%;
+position: relative;
+background-attachment: fixed;
 background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+text-align: center;
 }
 #snow{
 	background: none;
