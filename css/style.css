@@ -1,3 +1,7 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
 .Header{
 background: url(../images/main-us2.jpg) no-repeat;
 float: left;
