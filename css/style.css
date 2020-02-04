@@ -2,12 +2,12 @@ html, body {
     margin: 0;
     height: 100%;
 }
-.sector1{
+.sector1 {
 float: left;
 width: 100%;
 }
 
-.Header{
+.Header {
 background: url(../images/main-us2.jpg) no-repeat;
 float: left;
 width: 100%;
@@ -18,8 +18,8 @@ background-position: center center;
 background-repeat: no-repeat;
 text-align: center;
 margin: 0;
-
 }
+
 .MA_textinfo {
   float: left;
   width: 50%;
@@ -64,7 +64,7 @@ margin: 0;
 		/* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
 	}
 }
-#snow{
+#snow {
 	background: none;
 	font-family: Androgyne;
 	background-image: url(../images/s1.png), url(../images/s2.png), url(../images/s3.png);
