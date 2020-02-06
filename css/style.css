@@ -5,10 +5,11 @@ html, body {
 .sector1 {
 float: left;
 width: 100%;
+height: calc(100% - 200px);
 }
 
 .Header {
-background: url(../images/main-us2.jpg) no-repeat;
+background: url(../images/main-us.jpg) no-repeat;
 float: left;
 width: 100%;
 position: relative;
@@ -18,14 +19,49 @@ background-position: center center;
 background-repeat: no-repeat;
 text-align: center;
 margin: 0;
+height: 100%;
 }
-
+.wd_header_wrapper {
+  width: 90%;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.70);
+  z-index: 1;
+  position: relative;
+  margin-top: 60px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  box-shadow: 0px 0px 40px -20px #000000;
+  height: 100px;
+}
+.menu_fixed.wd_header_wrapper {
+  width: 100%;
+  float: left;
+  display: block;
+  margin-top: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.menu_fixed {
+  position: fixed;
+  z-index: 1000;
+  padding: 0px 0px;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  -o-box-shadow: 0px 0px 25px -10px;
+  -ms-box-shadow: 0px 0px 25px -10px;
+  -moz-box-shadow: 0px 0px 25px -10px;
+  -webkit-box-shadow: 0px 0px 25px -10px;
+  box-shadow: 0px 0px 25px -10px;
+}
 .MA_textinfo {
   float: left;
   width: 50%;
   padding: 200px 0px 200px 200px;
   text-align: center;
-  height: 100%;
+  height: -webkit-fill-available;
+
 }
 
 .MA_textinfo img {
