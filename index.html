@@ -4,8 +4,24 @@
         <title>Maria Alex</title>
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>  
+        <script>
+             var hasBeenTrigged = false;
+         $(window).scroll(function() {
+            if ($(this).scrollTop() >= 300) {
+                    $(".wd_header_wrapper").addClass("fadeInDown");
+                    $(".wd_header_wrapper").addClass("animated");
+                    $(".wd_header_wrapper").addClass("menu_fixed");
+                } else {
+                    $(".wd_header_wrapper").removeClass("fadeInDown");
+                    $(".wd_header_wrapper").removeClass("animated");
+                    $(".wd_header_wrapper").removeClass("menu_fixed");
+                }
+
+        });
+            </script>
         <div class="sector1">     
             <div class="Header">  
                 <div id="snow"></div>
@@ -15,7 +31,7 @@
                 </div>
             </div> 
        </div>
-         <!-- <div style="height:10000px;background-color:red;font-size:36px">
-         </div>   -->
+          <div style="height:10000px;background-color:red;font-size:36px">
+         </div>  
     </body>
 </html>	

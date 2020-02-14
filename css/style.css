@@ -5,7 +5,7 @@ html, body {
 .sector1 {
 float: left;
 width: 100%;
-height: calc(100% - 200px);
+/* height: calc(100% - 200px); */
 }
 
 .Header {
@@ -72,6 +72,25 @@ height: 100%;
   animation-name: pulse;
   
 }
+.menu_fixed.wd_header_wrapper {
+  width: 100%;
+  float: left;
+  display: block;
+  margin-top: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 @media (max-width: 767px) {
 .MA_textinfo {
      /* width: 70%; */
@@ -82,6 +101,18 @@ height: 100%;
 .MA_textinfo {
     padding: 100px 0px 100px 0px;
   }
+}
+@keyframes fadeInDown {
+0% {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, -100%, 0);
+}
+100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
 }
 @keyframes pulse {
 	0% {
