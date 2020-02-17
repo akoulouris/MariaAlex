@@ -9,17 +9,15 @@ width: 100%;
 }
 
 .Header {
-background: url(../images/main-us4.jpg) no-repeat;
-float: left;
-width: 100%;
-position: relative;
-background-attachment: fixed;
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
-text-align: center;
-margin: 0;
-height: 100%;
+    float: left;
+     width: 100%;
+    background: url(../images/main-us4.jpg);
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
 }
 .wd_header_wrapper {
   width: 90%;
@@ -60,7 +58,7 @@ height: 100%;
   width: 50%;
   padding: 200px 0px 200px 200px;
   text-align: center;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
 
 }
 
@@ -71,6 +69,12 @@ height: 100%;
   animation-iteration-count: infinite;
   animation-name: pulse;
   
+}
+
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 .menu_fixed.wd_header_wrapper {
   width: 100%;
@@ -91,17 +95,27 @@ height: 100%;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-@media (max-width: 767px) {
-.MA_textinfo {
-     /* width: 70%; */
-    padding: 50px 0px 50px 0px;
-  }
-}
+
+
+
 @media (max-width: 991px) and (min-width: 768px) {
 .MA_textinfo {
     padding: 100px 0px 100px 0px;
   }
 }
+
+@media (max-width: 767px) {
+  .MA_textinfo {
+        width: 70%; 
+      padding: 50px 0px 50px 0px;
+    }
+  }
+
+  @media (max-width: 479px){
+    .MA_textinfo {
+        width: 100%;
+    }
+  }
 @keyframes fadeInDown {
 0% {
   opacity: 0;
