@@ -19,6 +19,13 @@ width: 100%;
     background-repeat: no-repeat;
     text-align: center;
 }
+.wd_heading {
+  float: left;
+  width: 100%;
+  margin-bottom: 60px;
+  text-align: center;
+  text-transform: uppercase;
+}
 .wd_header_wrapper {
   width: 90%;
   display: inline-block;
