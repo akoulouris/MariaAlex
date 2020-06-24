@@ -6,6 +6,7 @@ html, body {
 float: left;
 width: 100%;
 height: calc(100% - 30px);
+min-height: 600px;
 }
 
 .Header {
@@ -19,6 +20,7 @@ height: calc(100% - 30px);
     background-repeat: no-repeat;
     text-align: center;
     height: calc(100% - 30px);
+    min-height: 600px;
 }
 .wd_heading {
   float: left;
@@ -247,27 +249,7 @@ height: calc(100% - 30px);
   float: left;
   width: 100%;
 }
-@media (max-width: 991px) and (min-width: 768px) {
-.MA_textinfo {
-     padding: 34px 0px 100px 0px; 
-  }
-}
 
-@media (max-width: 767px) {
-  .MA_textinfo {
-        width: 70%; 
-        padding: 34px 153px 38px 0px;
-           
-      
-    }
-  }
-
-  @media (max-width: 479px){
-    .MA_textinfo {
-        width: 100%;
-        padding: 94px 0px 50px 3px;
-    }
-  }
 
   .wd_main_menu ul li{
     list-style: none;
@@ -276,7 +258,7 @@ height: calc(100% - 30px);
 }
 .wd_main_menu ul li a{
     float: left;
-    padding: 50px 16px;
+    padding: 30px 16px;
     margin: 0px;
     color: #111111;
     font-size: 18px;
@@ -314,7 +296,7 @@ height: calc(100% - 30px);
 .wd_logo{
   float: left;
   width: 100%;
-  padding-top: 35px;
+  padding-top: 15px;
 }
 .wd_logo img {
   display: inline-block;
@@ -423,8 +405,60 @@ height: calc(100% - 30px);
   100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
 }
   
-
+.number{
+  background: rgba(107, 110, 233, 0.8);
+  padding: 0 5px;
+  border-radius: 5px;
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+}
+.year, .day, .hour, .min, .sec {
+  font-size: 30px;
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 5px; 
+  color: white;  
+}
+.format {
+  font-weight: 300;
+  font-size: 14px;
+  opacity: 1;
+  width: 60px;
+  color: white;
+}
 /*-- Responsive css Start --*/
+@media (max-width: 991px) and (min-width: 768px) {
+  .MA_textinfo {
+       padding: 34px 0px 100px 0px; 
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .MA_textinfo {
+          width: 100%; 
+          /* padding: 34px 153px 38px 0px; */
+          padding: 34px 0px 101px 0px;
+             
+        
+      }
+    }
+  
+    @media (max-width: 479px){
+      .MA_textinfo {
+          width: 100%;
+          padding: 0px 0px 122px  3px;
+      }
+      .year, .day, .hour, .min, .sec {
+        font-size: 30px;
+        display: inline-block;
+        font-weight: 500;
+        text-align: center;
+        margin: 0 0px;
+        color: white;
+    }
+    }
 @media (max-width: 1200px) {}
 @media (min-width: 992px) and (max-width: 1199px) {
 
@@ -670,3 +704,5 @@ height: calc(100% - 30px);
         }
       
       }
+
+      
