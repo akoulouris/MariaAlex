@@ -7,6 +7,7 @@ float: left;
 width: 100%;
 height: calc(100% - 30px);
 min-height: 600px;
+max-height: 1040px;
 }
 
 .Header {
@@ -21,6 +22,7 @@ min-height: 600px;
     text-align: center;
     height: calc(100% - 30px);
     min-height: 600px;
+    max-height: 1040px;
 }
 .wd_heading {
   float: left;
@@ -69,25 +71,27 @@ min-height: 600px;
   box-shadow: 0px 0px 25px -10px;
 }
 .MA_textinfo {
-  position: relative;
+   position: relative; 
   float: left;
   width: 50%;
-  padding: 34px  0px 50px 178px;
+  padding: 200px 0px 200px 200px;
+  /* padding: 34px  0px 50px 178px; */
   text-align: center;
-  height: calc(100% - 166px);
+   height: calc(100% - 166px); 
   /* height: -webkit-fill-available; */
   
 
 }
 
 .MA_textinfo img {
-  /* display: inline-block; */
+   display: inline-block; 
   animation-duration: 2s;
   animation-delay: 300ms;
   animation-iteration-count: infinite;
   animation-name: pulse;
-  max-height:100%;
-  max-width:100%;
+  /* min-height: 259px; */
+   max-height:100%;
+  max-width:100%; 
 }
 
 #headbottom {
@@ -429,26 +433,34 @@ min-height: 600px;
   color: white;
 }
 /*-- Responsive css Start --*/
-@media (max-width: 991px) and (min-width: 768px) {
+@media (max-height:1040px) and (min-height:0px){
   .MA_textinfo {
-       padding: 34px 0px 100px 0px; 
+    padding: 67px 0px 140px  0px;
+  }
+  }
+@media (max-width: 1199px) and (min-width: 992px) and (min-height:1040px){
+.MA_textinfo {
+    padding: 150px 0px 150px 150px;
+    height: calc(100% - 230px);
+}
+}
+@media (max-width: 991px) and (min-width: 768px)  and (min-height:1040px) {
+  .MA_textinfo {
+    padding: 200px 0px 201px 0px;
     }
   }
   
   @media (max-width: 767px) {
     .MA_textinfo {
-          width: 100%; 
-          /* padding: 34px 153px 38px 0px; */
-          padding: 34px 0px 101px 0px;
-             
-        
+      width: 100%;
+      padding: 77px 0px 121px 0px;                  
       }
     }
   
     @media (max-width: 479px){
       .MA_textinfo {
-          width: 100%;
-          padding: 0px 0px 122px  3px;
+        width: 100%;
+        padding: 77px 0px 121px 0px;
       }
       .year, .day, .hour, .min, .sec {
         font-size: 30px;
@@ -492,9 +504,9 @@ min-height: 600px;
   .wd_family_tabbox .tab-content:after {
       width: 90%;
   }
-  .wd_slider_textinfo {
+  /* .wd_slider_textinfo {
       padding: 150px 0px 150px 150px;
-  }
+  } */
   .wd_about_infobox_date {
       padding: 65px 20px;
   }
@@ -637,10 +649,6 @@ min-height: 600px;
       .wd_logo {
           padding: 20px 0px;
         text-align: left;
-      }
-      .wd_slider_textinfo {
-          width: 70%;
-          padding: 50px 0px 50px 0px;
       }
       .wd_story_line {
           display: none;
