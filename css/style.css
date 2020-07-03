@@ -6,7 +6,7 @@ html, body {
 float: left;
 width: 100%;
 height: calc(100% - 30px);
-min-height: 600px;
+min-height: 566px;
 max-height: 1040px;
 }
 
@@ -21,7 +21,7 @@ max-height: 1040px;
     background-repeat: no-repeat;
     text-align: center;
     height: calc(100% - 30px);
-    min-height: 600px;
+    min-height: 566px;
     max-height: 1040px;
 }
 .wd_heading {
@@ -245,6 +245,8 @@ max-height: 1040px;
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+
+/* TopManu */
 .wd_mainmenu_wrapper {
   float: left;
   width: 100%;
@@ -321,6 +323,21 @@ max-height: 1040px;
 .fa-navicon:before, .fa-reorder:before, .fa-bars:before {
   content: "\f0c9";
 }
+.fa-remove:before, .fa-close:before, .fa-times:before {
+  content: "\f00d";
+}
+.wd_heading h1 {
+  float: left;
+  width: 100%;
+  margin: 10px 0px;
+  font-size: 40px;
+  font-family: 'Lora', serif;
+  line-height: 1.1;
+  font-weight: 400;
+  color: #222222;
+}
+
+
 
 /* @media (max-width: 1310px) and (min-width: 768px){
 .wd_logo {
@@ -564,6 +581,7 @@ max-height: 1040px;
         padding: 23px 10px;
     }
     }
+
     @media (max-width: 805px) {
 
       .wd_menu_btn{
@@ -620,7 +638,7 @@ max-height: 1040px;
           transition: all 0.3s;
         overflow: scroll;
       }
-      .wd_main_menu ul {
+     .wd_main_menu ul {
           width: 100%;
       }
       .wd_main_menu ul li {
@@ -640,7 +658,7 @@ max-height: 1040px;
         background-color:#ffffff;
         color:#6b6ee9;
       }
-      .menu_fixed .wd_main_menu ul li a {
+       .menu_fixed .wd_main_menu ul li a {
           padding: 15px;
       }
       .wd_header_wrapper .wd_btn {
@@ -710,7 +728,12 @@ max-height: 1040px;
       .wd_main_menu ul li a:hover, .wd_main_menu ul li.active a{
           background:#ffffff;
         }
-      
+       
       }
 
-      
+      @media (max-width: 380px){
+        .wd_main_menu_wrapper {
+            width: 190px;
+        }
+
+      }

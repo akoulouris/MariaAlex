@@ -30,6 +30,13 @@
                         scrollTop: ($("#sector2").offset().top - heightTopBar-76)
                     }, 'slow');
                 });
+
+
+                $(".wd_menu_btn").on('click', function(e) {
+                    $(".wd_main_menu_wrapper").toggleClass("wd_main_menu_hide");
+                    $(".fa").toggleClass("fa-close");
+                    $(".fa").toggleClass("fa-bars");
+                });
             });
                    
 
@@ -52,6 +59,14 @@
                     $(".wd_header_wrapper").removeClass("menu_fixed");
                 }
 
+                if ($(this).scrollTop() >= 250) {
+                    $(".wd_heading").addClass("fadeInDown");
+                    $(".wd_heading").addClass("animated");
+                    $(".wd_heading").removeAttr("style")
+                } else {
+
+                }
+
         });
 
       
@@ -70,7 +85,7 @@
                     </div>
                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                           <div class="wd_mainmenu_wrapper">
-                            <div class="wd_main_menu_wrapper">
+                            <div class="wd_main_menu_wrapper ">
                                 <div class="wd_main_menu wd_single_index_menu">
                                     <ul>
                                         <li><a href="0">Home</a></li>
@@ -128,6 +143,11 @@
         <div id="sector2" class="sector1">       
            <div class="container">
             <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wd_heading" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
+                        <h1>welcome  Our Stars</h1>
+                    </div>
+                </div>
                 <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 d-inline-block">
                     <div class="infoBox_img"  style="">
                         <img src="./images/Maria_Mitsaki.jpg" alt="" style="margin: auto;height: 288px; border-width: 1px;   border-color: #6b6ee9;   border-style: solid;   border-radius: 50%;" class="img-responsive">                      
