@@ -605,7 +605,7 @@ max-height: 1040px;
         text-shadow:none;
       }
       .wd_main_menu_wrapper{
-        z-index: 2;
+        z-index: 3;
         position:fixed;
           left: 0px;
           top: 0px;
