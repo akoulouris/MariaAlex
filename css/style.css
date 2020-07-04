@@ -16,13 +16,29 @@ max-height: 1040px;
     background: url(../images/main-us4.jpg);
     position: relative;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100vmax 100vmax;
     background-position: center center;
     background-repeat: no-repeat;
     text-align: center;
     height: calc(100% - 30px);
     min-height: 566px;
-    max-height: 1040px;
+    max-height: 1040px; 
+}
+body:after{
+  float: left;
+  width: 100%;
+  content:"";
+  position:fixed; /* stretch a fixed position to the whole screen */
+  height:100vh; /* fix for mobile browser address bar appearing disappearing */
+  z-index:-1; /* needed to keep in the background */
+  background: url(../images/main-us4.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .wd_heading {
   float: left;
