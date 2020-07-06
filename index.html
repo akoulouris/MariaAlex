@@ -18,39 +18,39 @@
     <body>  
         
         <script>
-              var sector3_element_position;
+                var sector3_element_position;
              
-            $( document ).ready(function() {
-              
-               // alert();
-                yourFunction();
-                $(".headbottom").on('click', function(e) {
+                $( document ).ready(function() {
+                    setTimeLine()
+                
+                    yourFunction();
+                    $(".headbottom").on('click', function(e) {
 
-                        e.preventDefault();
-                        var target = $(this).attr('href');
-                        var heightTopBar = $( ".wd_header_wrapper" ).height()
-                        $('html, body').animate({
-                        scrollTop: ($("#sector2").offset().top - heightTopBar-76)
-                    }, 'slow');
+                            e.preventDefault();
+                            var target = $(this).attr('href');
+                            var heightTopBar = $( ".wd_header_wrapper" ).height()
+                            $('html, body').animate({
+                            scrollTop: ($("#sector2").offset().top - heightTopBar-76)
+                        }, 'slow');
+                    });
+
+
+                    $(".wd_menu_btn").on('click', function(e) {
+                        $(".wd_main_menu_wrapper").toggleClass("wd_main_menu_hide");
+                        $(".fa").toggleClass("fa-close");
+                        $(".fa").toggleClass("fa-bars");
+                    });
+
+                    sector3_element_position = $('#sector3').offset().top;
                 });
-
-
-                $(".wd_menu_btn").on('click', function(e) {
-                    $(".wd_main_menu_wrapper").toggleClass("wd_main_menu_hide");
-                    $(".fa").toggleClass("fa-close");
-                    $(".fa").toggleClass("fa-bars");
-                });
-
-                sector3_element_position = $('#sector3').offset().top;
-            });
                    
-            function yourFunction(){
-                $("#headbottom").addClass("headbottom");  
-                    setTimeout(function() {
-                        $("#headbottom").removeClass("headbottom");
-                    }, 2000);
-             setTimeout(yourFunction,7000);
-            }
+                function yourFunction(){
+                    $("#headbottom").addClass("headbottom");  
+                        setTimeout(function() {
+                            $("#headbottom").removeClass("headbottom");
+                        }, 2000);
+                setTimeout(yourFunction,7000);
+                }
         
               var hasBeenTrigged = false;
               
@@ -82,7 +82,15 @@
                             }
                 });
 
-      
+                            function setTimeLine(){
+                              $.getJSON("https://raw.githubusercontent.com/akoulouris/MariaAlex/master/data/TimeLine.json", function(result){
+                                           
+                                        $.each(result.timeLineItems, function(index, d){
+                                               alert(d.date);
+                                        });
+                                });
+                                        
+                            }
      
     </script>
  
@@ -179,13 +187,13 @@
         <div id="sector3">  
            <div class="wd_story_wrapper wd_toppadder90 wd_bottompadder90">     
                 <div class="container">
-                    <div class="row">
+                    <div id="timeLine" class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="wd_heading" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
                                 <h1>Our true love story</h1>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         
                                 <div class="wd_story_covers">
                                     <div class="wd_story_line"></div>
@@ -202,7 +210,7 @@
                                         </div>
                                     </div>
                                 </div>                       
-                        </div>                
+                        </div>                 -->
                     </div>
                 </div> 
             </div>
