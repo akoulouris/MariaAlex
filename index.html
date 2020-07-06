@@ -18,7 +18,10 @@
     <body>  
         
         <script>
+              var sector3_element_position;
+             
             $( document ).ready(function() {
+              
                // alert();
                 yourFunction();
                 $(".headbottom").on('click', function(e) {
@@ -37,9 +40,10 @@
                     $(".fa").toggleClass("fa-close");
                     $(".fa").toggleClass("fa-bars");
                 });
+
+                sector3_element_position = $('#sector3').offset().top;
             });
                    
-
             function yourFunction(){
                 $("#headbottom").addClass("headbottom");  
                     setTimeout(function() {
@@ -47,27 +51,36 @@
                     }, 2000);
              setTimeout(yourFunction,7000);
             }
-             var hasBeenTrigged = false;
-         $(window).scroll(function() {
-            if ($(this).scrollTop() >= 300) {
-                    $(".wd_header_wrapper").addClass("fadeInDown");
-                    $(".wd_header_wrapper").addClass("animated");
-                    $(".wd_header_wrapper").addClass("menu_fixed");
-                } else {
-                    $(".wd_header_wrapper").removeClass("fadeInDown");
-                    $(".wd_header_wrapper").removeClass("animated");
-                    $(".wd_header_wrapper").removeClass("menu_fixed");
-                }
+        
+              var hasBeenTrigged = false;
+              
+             $(window).scroll(function() {
+                
+                            if ($(this).scrollTop() >= 300) {
+                                $(".wd_header_wrapper").addClass("fadeInDown");
+                                $(".wd_header_wrapper").addClass("animated");
+                                $(".wd_header_wrapper").addClass("menu_fixed");
+                            } else {
+                                $(".wd_header_wrapper").removeClass("fadeInDown");
+                                $(".wd_header_wrapper").removeClass("animated");
+                                $(".wd_header_wrapper").removeClass("menu_fixed");
+                            }
 
-                if ($(this).scrollTop() >= 250) {
-                    $(".wd_heading").addClass("fadeInDown");
-                    $(".wd_heading").addClass("animated");
-                    $(".wd_heading").removeAttr("style")
-                } else {
+                            if ($(this).scrollTop() >= 250) {
+                                $(".wd_heading").addClass("fadeInDown");
+                                $(".wd_heading").addClass("animated");
+                                $(".wd_heading").removeAttr("style")
+                            }
+                               // alert(sector3_element_position);
+                              var y_scroll_pos = window.pageYOffset;
+                
 
-                }
-
-        });
+                             if(y_scroll_pos > sector3_element_position) {
+                                $("#LoveStory").addClass("active");
+                                
+                               // alert(y_scroll_pos);
+                            }
+                });
 
       
      
@@ -90,7 +103,7 @@
                                     <ul>
                                         <li><a href="0">Home</a></li>
                                         <li><a href="1">About Us</a></li>
-                                        <li><a href="2">Love Story</a></li>
+                                        <li id="LoveStory"><a  href="2">Love Story</a></li>
                                         <li><a href="3">Events</a></li>
                                         <li><a href="4">Rsvp</a></li>
                                         <li><a href="5">Family</a></li>
