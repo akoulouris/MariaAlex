@@ -84,12 +84,39 @@
 
                             function setTimeLine(){
                               $.getJSON("https://raw.githubusercontent.com/akoulouris/MariaAlex/master/data/TimeLine.json", function(result){
-                                           
+                                           var html='';
                                         $.each(result.timeLineItems, function(index, d){
-                                               alert(d.photo);
+                                            
+                                               var rightORleft = ''
+                                               if (isEven(index)){rightORleft ="wd_story_covers_box_left"}else{rightORleft="wd_story_covers_box_right"};
+                                              // var html = "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>"+
+                                                              //  "<div class='wd_story_covers'>"+
+                                                                 //   "<div class='wd_story_line'></div>"+
+                                                          var html =   "<div class='"+ rightORleft +"'>"+
+                                                                        "<div class='wd_story_dot'><span></span></div>"+
+                                                                        "<div class='wd_story_covers_box_img'>"+
+                                                                            "<img src='images/"+ d.photo +"' alt='Story'>"+
+                                                                        "</div>"+
+                                                                        "<div class='wd_story_covers_box_datails'>"+
+                                                                            "<span>"+d.date+"</span>"+
+                                                                            "<h1>"+d.Title+"</h1>"+ 
+                                                                            "<span>"+d.SubTitle+"</span>"+
+                                                                            "<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor...</p>"+
+                                                                        "</div>"+
+                                                                   "</div>"
+                                                               // "</div>"+
+                                                          //  "</div>"
+                                               $("#timeLine").append(html);
                                         });
                                 });
                                         
+                            }
+
+                            function isEven(value) {
+                                if (value%2 == 0)
+                                    return true;
+                                else
+                                    return false;
                             }
      
     </script>
@@ -187,17 +214,17 @@
         <div id="sector3">  
            <div class="wd_story_wrapper wd_toppadder90 wd_bottompadder90">     
                 <div class="container">
-                    <div id="timeLine" class="row">
+                    <div  class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="wd_heading" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
                                 <h1>Our true love story</h1>
                             </div>
                         </div>
-                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         
-                                <div class="wd_story_covers">
+                                <div id="timeLine" class="wd_story_covers">
                                     <div class="wd_story_line"></div>
-                                    <div class="wd_story_covers_box_left">
+                                 <!--    <div class="wd_story_covers_box_left">
                                         <div class="wd_story_dot"><span></span></div>
                                         <div class="wd_story_covers_box_img">
                                             <img src="images/TimeLineStory1.jpg" alt="Story">
@@ -208,9 +235,9 @@
                                             <span>That day changed Life</span>
                                             <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor...</p>
                                         </div>
-                                    </div>
+                                    </div>    -->
                                 </div>                       
-                        </div>                 -->
+                        </div>             
                     </div>
                 </div> 
             </div>
