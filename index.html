@@ -18,22 +18,27 @@
     <body>  
         
         <script>
-                var sector3_element_position;
+                       $.fn.isInViewport = function() {
+                            var elementTop = $(this).offset().top;
+                            var elementBottom = elementTop + $(this).outerHeight();
+                            var heightTopBar = $( ".wd_header_wrapper" ).height()
+                            var viewportTop = $(window).scrollTop()+heightTopBar;
+                            var viewportBottom = viewportTop + $(window).height();
+                           return elementBottom > viewportTop && elementTop < viewportBottom;
+                        };
              
-                $( document ).ready(function() {
+                $(document).ready(function() {
                     setTimeLine()
                 
                     yourFunction();
                     $(".headbottom").on('click', function(e) {
-
                             e.preventDefault();
-                            var target = $(this).attr('href');
+                            var Destination = $("div[section-scroll='1']")
                             var heightTopBar = $( ".wd_header_wrapper" ).height()
                             $('html, body').animate({
-                            scrollTop: ($("#sector2").offset().top - heightTopBar-76)
+                            scrollTop: (Destination.offset().top - heightTopBar+1)
                         }, 'slow');
                     });
-
 
                     $(".wd_menu_btn").on('click', function(e) {
                         $(".wd_main_menu_wrapper").toggleClass("wd_main_menu_hide");
@@ -41,7 +46,16 @@
                         $(".fa").toggleClass("fa-bars");
                     });
 
-                    sector3_element_position = $('#sector3').offset().top;
+                    $(".wd_main_menu ul:nth-child(1) li a").on('click', function(e) { 
+                        var navItem= $( this ).attr("href");
+                         var Destination = $("div[section-scroll='"+navItem+"']")
+                            var heightTopBar = $( ".wd_header_wrapper" ).height()
+                                $('html, body').animate({
+                                    scrollTop: (Destination.offset().top - heightTopBar+1)
+                                }, 'slow');
+                                return false;
+                    });
+                             
                 });
                    
                 function yourFunction(){
@@ -51,35 +65,47 @@
                         }, 2000);
                 setTimeout(yourFunction,7000);
                 }
+         
+                $(window).on('resize scroll', function() {
+                   
+                    $('div[section-scroll]').each(function() {
+                        if ($(this).isInViewport()) {
+                        var navItem= $( this ).attr("section-scroll");
+                        $(".wd_main_menu ul:nth-child(1) li").removeClass("active");
+                        $("a[href='"+navItem+"']").parent().addClass("active");
+                          return false; 
+                        }
+                        
+                        });
+
+                });
         
               var hasBeenTrigged = false;
               
              $(window).scroll(function() {
                 
-                            if ($(this).scrollTop() >= 300) {
-                                $(".wd_header_wrapper").addClass("fadeInDown");
-                                $(".wd_header_wrapper").addClass("animated");
-                                $(".wd_header_wrapper").addClass("menu_fixed");
-                            } else {
-                                $(".wd_header_wrapper").removeClass("fadeInDown");
-                                $(".wd_header_wrapper").removeClass("animated");
-                                $(".wd_header_wrapper").removeClass("menu_fixed");
-                            }
+                                if ($(this).scrollTop() >= 300) {
+                                    $(".wd_header_wrapper").addClass("fadeInDown");
+                                    $(".wd_header_wrapper").addClass("animated");
+                                    $(".wd_header_wrapper").addClass("menu_fixed");
+                                } else {
+                                    $(".wd_header_wrapper").removeClass("fadeInDown");
+                                    $(".wd_header_wrapper").removeClass("animated");
+                                    $(".wd_header_wrapper").removeClass("menu_fixed");
+                                }
 
-                            if ($(this).scrollTop() >= 250) {
-                                $(".wd_heading").addClass("fadeInDown");
-                                $(".wd_heading").addClass("animated");
-                                $(".wd_heading").removeAttr("style")
-                            }
-                               // alert(sector3_element_position);
-                              var y_scroll_pos = window.pageYOffset;
-                
+                                if ($(this).scrollTop() >= 250) {
+                                    $(".aboutUs").addClass("fadeInDown");
+                                    $(".aboutUs").addClass("animated");
+                                    $(".aboutUs").removeAttr("style")
+                                }
 
-                             if(y_scroll_pos > sector3_element_position) {
-                                $("#LoveStory").addClass("active");
-                                
-                               // alert(y_scroll_pos);
-                            }
+                                if ($(this).scrollTop() >= 750) {
+                                    $(".OurTruLoveStoryAnimation").addClass("fadeInDown");
+                                    $(".OurTruLoveStoryAnimation").addClass("animated");
+                                    $(".OurTruLoveStoryAnimation").removeAttr("style")
+                                }
+
                 });
 
                             function setTimeLine(){
@@ -121,7 +147,7 @@
      
     </script>
  
-         <div class="sector1">   
+         <div class="sector1" section-scroll="0">   
             <div class="Header">  
                 <div id="snow"></div>
                 <div class="wd_header_wrapper">
@@ -136,9 +162,9 @@
                             <div class="wd_main_menu_wrapper ">
                                 <div class="wd_main_menu wd_single_index_menu">
                                     <ul>
-                                        <li><a href="0">Home</a></li>
+                                        <li  class="active"><a href="0">Home</a></li>
                                         <li><a href="1">About Us</a></li>
-                                        <li id="LoveStory"><a  href="2">Love Story</a></li>
+                                        <li><a  href="2">Love Story</a></li>
                                         <li><a href="3">Events</a></li>
                                         <li><a href="4">Rsvp</a></li>
                                         <li><a href="5">Family</a></li>
@@ -185,14 +211,14 @@
             </div> 
        </div> 
        <!-- <div class="sector1" style="padding-bottom: 85px;background: url(./images/profil_background.jpg);">      -->
-        <div class="wd_heading">
+        <!-- <div class="wd_heading">
 
-        </div>
-        <div id="sector2" class="">       
-           <div class="container">
+        </div> -->
+        <div id="sector2" class="" style="float: left;width: 100%;" section-scroll="1">       
+           <div class="container" style="padding-top:60px;">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="wd_heading" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
+                        <div class="wd_heading aboutUs" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
                             <h1>welcome  Our Stars</h1>
                         </div>
                     </div>
@@ -211,12 +237,12 @@
                 </div>
            </div> 
         </div>  
-        <div id="sector3">  
+        <div id="sector3" style="float: left;width: 100%;" section-scroll="2">  
            <div class="wd_story_wrapper wd_toppadder90 wd_bottompadder90">     
                 <div class="container">
                     <div  class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="wd_heading" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
+                            <div class="wd_heading OurTruLoveStoryAnimation" data-wow-delay="0.3s"style="visibility: hidden; animation-delay: 0.3s; animation-name: none;" >
                                 <h1>Our true love story</h1>
                             </div>
                         </div>

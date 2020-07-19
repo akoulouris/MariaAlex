@@ -5,7 +5,7 @@ html, body {
 .sector1 {
 float: left;
 width: 100%;
-height: calc(100% - 30px);
+height: calc(100% - 50px);
 min-height: 566px;
 max-height: 1040px;
 }
@@ -23,12 +23,9 @@ max-height: 1040px;
     background-position: center center;
     background-repeat: no-repeat;
     text-align: center;
-    height: calc(100% - 30px);
-    min-height: 566px;
-    max-height: 1040px; 
-
-
-    
+    height: calc(100% - 00px);
+    /* min-height: 566px;
+    max-height: 1040px;     */
 }
 
 
@@ -305,6 +302,17 @@ max-height: 1040px;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
 }
+
+/* .active{
+	color: #6b6ee9!important;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+} */
+
+
 .menu_fixed .wd_logo {
   padding-top: 10px;
 }
@@ -693,7 +701,7 @@ float:right;
       padding-left: 30px;
   }
   .menu_fixed .wd_logo {
-      padding-top: 24px;
+      padding-top: 15px;
   }
   .wd_guest_infobox {
       padding: 30px 0px 30px 0px;
@@ -760,11 +768,11 @@ float:right;
         display: inline-block;
     }
     .wd_main_menu ul li a {
-        padding: 30px 10px;
+        padding: 20.5px 10px;
         font-size: 16px;
     }
     .wd_logo {
-        padding-top: 15px;
+        padding-top: 10px;
         padding-bottom: 15px;
         text-align: center;
     }
@@ -773,7 +781,7 @@ float:right;
         padding-left: 0px;
     }
     .menu_fixed .wd_main_menu ul li a {
-        padding: 23px 10px;
+        padding: 20.5px 10px;
     }
     }
 
@@ -818,7 +826,7 @@ float:right;
           display: block;
           float: none;
           position: absolute;
-          top: 35px;
+          top: 21px;
           right: 15px;
           border: none;
           width: 40px;
@@ -895,7 +903,7 @@ float:right;
           padding-left: 0px;
       }
       .wd_logo {
-          padding: 20px 0px;
+          padding: 10px 0px;
         text-align: left;
       }
       .wd_story_line {
