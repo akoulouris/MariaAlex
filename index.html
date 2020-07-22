@@ -18,6 +18,7 @@
     <body>  
         
         <script>
+           
                        $.fn.isInViewport = function() {
                             var elementTop = $(this).offset().top;
                             var elementBottom = elementTop + $(this).outerHeight();
@@ -359,7 +360,8 @@
                                             finalResults: false,
                                             showResults: false,
                                             multiple: false,
-                                            visibleResults:false
+                                            visibleResults:false,
+                                            vote:false
                                             
                             };
                         }
@@ -371,13 +373,19 @@
                             firebase.database().ref("votes/voteList/items").on("value", function(snapshot) { 
                                 // let returnArr = [];
                                     snapshot.forEach(function(childSnapshot){
-                                        self.answers.push(childSnapshot.val());
+                                    self.answers.push(childSnapshot.val());
                                        
                                     //Fill the local data property with Firebase data
                                     // self.answers = returnArr;
                                 });
                             });
                             console.log(self.answers);
+                             navigator.cookieEnabled === true      
+                            alert(document.cookie)
+                           if (document.cookie!=''){
+                             
+                            vote = true
+                           }
                         }
                    ,
                    computed: {  
@@ -405,6 +413,9 @@
                     handleVote(a){
                         a.selected = true
                         this.visibleResults = true
+                        document.cookie = "vote=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+                        vote = true
+                        alert(document.cookie)
                     }
 
                 }
