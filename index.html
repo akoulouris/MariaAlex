@@ -268,8 +268,152 @@
                 </div> 
             </div>
          </div> 
+         <div id="sector4" style="float: left;width: 100%;" section-scroll="4">
+            <div class="container">
+                <div  class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                      
+                        <div id="poll" class="timer">
+                            <poll>
+
+                            </poll>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+
+        </div>
+
         <!-- </div> -->
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
         <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBE9u9b0jy6_L_DZ9MiyDUiZG8XGh8mg5s",
+            authDomain: "mariaalex-b60b7.firebaseapp.com",
+            databaseURL: "https://mariaalex-b60b7.firebaseio.com",
+            projectId: "mariaalex-b60b7",
+            storageBucket: "mariaalex-b60b7.appspot.com",
+            messagingSenderId: "238565066982",
+            appId: "1:238565066982:web:13a14e5d8a4c97fc6c5327"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //var database = firebase.database();
+        //alert(database);
+        </script>
+        <script>
+               Vue.component('poll',{
+                    template: `<div class="vue-poll">
+                                <h3 class="qst" v-html="question"></h3>
+     
+                                <div class="ans-cnt">
+                                   
+                                 <div v-for="(a,index) in calcAnswers" :key="index" :class="{ ans: true, [a.custom_class]: (a.custom_class) }">
+                                        <template v-if="!finalResults">
+                                                <div v-if="!visibleResults" :class="{'ans-no-vote noselect': true, active: a.selected }" @click.prevent="handleVote(a)" >
+                                                <span class="txt" v-html="a.text"></span>
+                                            
+                                            </div>   
+                                            <div v-else :class="{ 'ans-voted': true, selected: a.selected }" >
+                                                <span v-if="a.percent" class="percent" v-text="a.percent"></span> 
+                                                <span class="txt" v-html="a.text"></span>          
+                                                
+                                            </div>  
+                                            
+
+                                            <span class="bg" :style="{ width: visibleResults ? a.percent : '0%' }"></span>
+                                        </template>
+                                        <template v-else>
+                                                <div class="ans-voted final">
+                                                    <span v-if="a.percent" class="percent" v-text="a.percent"></span>                  
+                                                    <span class="txt" v-html="a.text"></span>                                       
+                                                </div>
+                                            
+                                                <span :class="{ bg: true, selected: mostVotes == a.votes }" :style="{ width: a.percent }"></span>
+                                        </template>
+                                    </div>
+                              </div>
+                  
+                            </div> `
+                    ,
+                    props: []
+                    ,
+                    data: function(){
+                            return{
+                                question: 'What\'s your favourite <strong>JS</strong> framework?',
+                                answers: [],
+                                // // answers: [
+                                //             { value: 1, text: 'Vue', votes: 53 },
+                                //             { value: 2, text: 'React', votes: 35 },
+                                //             { value: 3, text: 'Angular', votes: 30 },
+                                //             { value: 4, text: 'Other', votes: 10 } 
+                                //         ],
+                                            finalResults: false,
+                                            showResults: false,
+                                            multiple: false,
+                                            visibleResults:false
+                                            
+                            };
+                        }
+                        ,
+                    mounted() {
+                        console.log(this.answers);
+                            let self = this;
+                            // Find data using the "lists" reference
+                            firebase.database().ref("votes/voteList/items").on("value", function(snapshot) { 
+                                // let returnArr = [];
+                                    snapshot.forEach(function(childSnapshot){
+                                        self.answers.push(childSnapshot.val());
+                                       
+                                    //Fill the local data property with Firebase data
+                                    // self.answers = returnArr;
+                                });
+                            });
+                            console.log(self.answers);
+                        }
+                   ,
+                   computed: {  
+                        totalVotes(){
+                            let totalVotes = 0
+                            this.answers.filter(a=>{
+                                if (!isNaN(a.votes) && a.votes > 0)
+                                    totalVotes += parseInt(a.votes)
+                            })
+                            return totalVotes
+                        },                                     
+                    calcAnswers(){
+                        
+                        return this.answers.map(a=>{
+                        //  a.percent = '0%'
+                       // alert(a)
+                       a.percent = ( Math.round( (parseInt(a.votes)/this.totalVotes ) * 100) ) + '%'
+                            return a
+                        }) 
+                     },
+                     
+                },
+                methods: 
+                {
+                    handleVote(a){
+                        a.selected = true
+                        this.visibleResults = true
+                    }
+
+                }
+              });
+              new Vue({
+                  el: "#poll",
+                });
+
+             //  Timer Component 
             Vue.component('Timer',{
                 template: `
                 <div>
