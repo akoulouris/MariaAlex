@@ -359,8 +359,8 @@
                                         </template>
                                     </div>
                               </div>
-                              <div class="votes" v-if="visibleResults" v-text="totalVotesFormatted + ' votes'"></div>
-                           
+                              <div class="votes" v-if="showTotalVotes && (visibleResults || finalResults)" v-text="totalVotesFormatted + ' votes'"></div>
+                  
                             </div> `
                     ,
                     props: []
@@ -404,7 +404,17 @@
                         }
                    ,
                    computed: {  
-                        
+                        // Voted: function(Text){
+                        //     console.log(Text);
+                        //     // let totalVotes = 0
+                        //      this.answers =  this.answers.forEach(a=>{
+                        //             if (a.text==Text){
+                        //             alert("in");
+                        //             a.selected = true
+                        //             }
+                        //         })
+                        //    // return  this.answers
+                        //     }, 
                         totalVotes(){
                             let totalVotes = 0
                             this.answers.filter(a=>{
@@ -412,10 +422,7 @@
                                     totalVotes += parseInt(a.votes)
                             })
                             return totalVotes
-                        },     
-                        totalVotesFormatted(){
-                            return this.totalVotes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                        },                                
+                        },                                     
                     calcAnswers(){
                         
                         return this.answers.map(a=>{
@@ -453,11 +460,6 @@
                        // alert(document.cookie)
  
                     }
-                    // ,
-                    // VoteAgain(){
-                    //     this.visibleResults = false
-                    // }
-
 
                 }
               });
