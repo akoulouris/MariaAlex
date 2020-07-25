@@ -359,7 +359,8 @@
                                         </template>
                                     </div>
                               </div>
-                  
+                              <div class="votes" v-if="visibleResults" v-text="totalVotesFormatted + ' votes'"></div>
+                               <div> <a href="#" @click.prevent="VoteAgain" class="submit" v-text="Vote again"></a></div>
                             </div> `
                     ,
                     props: []
@@ -403,17 +404,7 @@
                         }
                    ,
                    computed: {  
-                        // Voted: function(Text){
-                        //     console.log(Text);
-                        //     // let totalVotes = 0
-                        //      this.answers =  this.answers.forEach(a=>{
-                        //             if (a.text==Text){
-                        //             alert("in");
-                        //             a.selected = true
-                        //             }
-                        //         })
-                        //    // return  this.answers
-                        //     }, 
+                        
                         totalVotes(){
                             let totalVotes = 0
                             this.answers.filter(a=>{
@@ -421,7 +412,10 @@
                                     totalVotes += parseInt(a.votes)
                             })
                             return totalVotes
-                        },                                     
+                        },     
+                        totalVotesFormatted(){
+                            return this.totalVotes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        },                                
                     calcAnswers(){
                         
                         return this.answers.map(a=>{
@@ -430,17 +424,15 @@
                        a.percent = ( Math.round( (parseInt(a.votes)/this.totalVotes ) * 100) ) + '%'
 
                             var vote = getCookie("vote");
-                            alert(vote);
+                         //   alert(vote);
                             var TextVote = getCookie("TextVote");
-                            alert(TextVote);
+                           // alert(TextVote);
                             if (vote =='true'){  
                                 this.visibleResults = true 
                                 if (a.text==TextVote){
                                     a.selected  = true   
                                 }
-                                 
-
-                               
+                                                            
                             }
 
                             return a
@@ -456,11 +448,10 @@
                         a.selected = true
                         this.visibleResults = true
                         document.cookie = "vote=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
-                        alert(document.cookie)
+                      //  alert(document.cookie)
                         document.cookie = "TextVote="+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
-                        alert(document.cookie)
-                        
-                      
+                       // alert(document.cookie)
+ 
                     }
 
                 }
