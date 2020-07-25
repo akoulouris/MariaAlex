@@ -399,15 +399,7 @@
                             console.log(self.answers);
                             //navigator.cookieEnabled === true      
                          
-                            var vote = getCookie("vote");
-                            alert(vote);
-                            var TextVote = getCookie("TextVote");
-                            alert(TextVote);
-                            if (vote =='true'){  
-                                this.visibleResults = true 
-                                //this.Voted(TextVote)                      
-                                vote = true
-                            }
+                           
                         }
                    ,
                    computed: {  
@@ -436,6 +428,17 @@
                         //  a.percent = '0%'
                        // alert(a)
                        a.percent = ( Math.round( (parseInt(a.votes)/this.totalVotes ) * 100) ) + '%'
+
+                              var vote = getCookie("vote");
+                            alert(vote);
+                            var TextVote = getCookie("TextVote");
+                            alert(TextVote);
+                            if (vote =='true'){  
+                                this.visibleResults = true 
+                                a.selected  = true            
+                                vote = true
+                            }
+
                             return a
                         }) 
                      },
