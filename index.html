@@ -444,9 +444,9 @@
                         console.log(a);
                         a.selected = true
                         this.visibleResults = true
-                        document.cookie = "vote=true;TextVote= "+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+                        document.cookie = "vote=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
                         alert(document.cookie)
-                        document.cookie = "TextVote= "+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+                        document.cookie = "TextVote="+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
                         alert(document.cookie)
                         vote = true 
                       
