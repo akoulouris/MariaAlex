@@ -414,12 +414,13 @@
                         Voted(Text){
                             console.log(Text);
                             // let totalVotes = 0
-                                this.answers.filter(a=>{
-                                    if (a.text==Text)
+                             this.answers =  this.answers.forEach(a=>{
+                                    if (a.text==Text){
                                     alert("in");
                                     a.selected = true
+                                    }
                                 })
-                            return a
+                            return  this.answers
                             }, 
                         totalVotes(){
                             let totalVotes = 0
