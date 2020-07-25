@@ -405,23 +405,23 @@
                             alert(TextVote);
                             if (vote =='true'){  
                                 this.visibleResults = true 
-                                this.Voted(TextVote)                      
+                                //this.Voted(TextVote)                      
                                 vote = true
                             }
                         }
                    ,
                    computed: {  
-                        Voted: function(Text){
-                            console.log(Text);
-                            // let totalVotes = 0
-                             this.answers =  this.answers.forEach(a=>{
-                                    if (a.text==Text){
-                                    alert("in");
-                                    a.selected = true
-                                    }
-                                })
-                           // return  this.answers
-                            }, 
+                        // Voted: function(Text){
+                        //     console.log(Text);
+                        //     // let totalVotes = 0
+                        //      this.answers =  this.answers.forEach(a=>{
+                        //             if (a.text==Text){
+                        //             alert("in");
+                        //             a.selected = true
+                        //             }
+                        //         })
+                        //    // return  this.answers
+                        //     }, 
                         totalVotes(){
                             let totalVotes = 0
                             this.answers.filter(a=>{
