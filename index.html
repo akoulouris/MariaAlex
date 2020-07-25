@@ -411,7 +411,16 @@
                         }
                    ,
                    computed: {  
-                 
+                        Voted(votedText){
+                            alert(votedText);
+                            // let totalVotes = 0
+                                this.answers.filter(a=>{
+                                    if (a.text==votedText)
+                                    alert("in");
+                                    a.selected = true
+                                })
+                            return a
+                            }, 
                         totalVotes(){
                             let totalVotes = 0
                             this.answers.filter(a=>{
@@ -433,16 +442,7 @@
                 },
                 methods: 
                 {
-                    Voted(votedText){
-                        alert(votedText);
-                           // let totalVotes = 0
-                            this.answers.filter(a=>{
-                                if (a.text==votedText)
-                                alert("in");
-                                a.selected = true
-                            })
-                           // return a
-                        }, 
+   
                     handleVote(a){
                         console.log(a);
                         a.selected = true
