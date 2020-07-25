@@ -429,14 +429,18 @@
                        // alert(a)
                        a.percent = ( Math.round( (parseInt(a.votes)/this.totalVotes ) * 100) ) + '%'
 
-                              var vote = getCookie("vote");
+                            var vote = getCookie("vote");
                             alert(vote);
                             var TextVote = getCookie("TextVote");
                             alert(TextVote);
                             if (vote =='true'){  
                                 this.visibleResults = true 
-                                a.selected  = true            
-                                vote = true
+                                if (a.text==TextVote){
+                                    a.selected  = true   
+                                }
+                                 
+
+                               
                             }
 
                             return a
@@ -455,7 +459,7 @@
                         alert(document.cookie)
                         document.cookie = "TextVote="+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
                         alert(document.cookie)
-                        vote = true 
+                        
                       
                     }
 
