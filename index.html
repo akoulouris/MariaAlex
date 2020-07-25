@@ -360,7 +360,7 @@
                                     </div>
                               </div>
                               <div class="votes" v-if="showTotalVotes && (visibleResults || finalResults)" v-text="totalVotesFormatted + ' votes'"></div>
-                  
+                                 <a href="#" @click.prevent="again" class="submit" >again</a>
                             </div> `
                     ,
                     props: []
@@ -459,6 +459,9 @@
                         document.cookie = "TextVote="+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
                        // alert(document.cookie)
  
+                    },
+                    again(){
+                        this.visibleResults = false
                     }
 
                 }
