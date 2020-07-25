@@ -400,14 +400,25 @@
                             //navigator.cookieEnabled === true      
                          
                             var vote = getCookie("vote");
-                            alert(vote)
+                            alert(vote);
+                            var TextVote = getCookie("TextVote");
+                            alert(TextVote);
                             if (vote =='true'){  
-                                this.visibleResults = true                           
+                                this.visibleResults = true 
+                                this.Voted(TextVote)                      
                                 vote = true
                             }
                         }
                    ,
                    computed: {  
+                    Voted(votedText){
+                           // let totalVotes = 0
+                            this.answers.filter(a=>{
+                                if (a.text==votedText)
+                                a.selected = true
+                            })
+                           // return totalVotes
+                        }, 
                         totalVotes(){
                             let totalVotes = 0
                             this.answers.filter(a=>{
@@ -430,10 +441,11 @@
                 methods: 
                 {
                     handleVote(a){
+                        console.log(a);
                         a.selected = true
                         this.visibleResults = true
-                        document.cookie = "vote=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
-                        vote = true
+                        document.cookie = "vote=true;TextVote= "+ a.text +" expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+                        vote = true 
                         alert(document.cookie)
                     }
 
