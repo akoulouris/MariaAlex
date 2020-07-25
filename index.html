@@ -311,6 +311,23 @@
         //alert(database);
         </script>
         <script>
+
+                function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+                }
+
                Vue.component('poll',{
                     template: `<div class="vue-poll">
                                 <h3 class="qst" v-html="question"></h3>
@@ -380,12 +397,14 @@
                                 });
                             });
                             console.log(self.answers);
-                             navigator.cookieEnabled === true      
-                            alert(document.cookie)
-                           if (document.cookie!=''){
-                             
-                            vote = true
-                           }
+                            //navigator.cookieEnabled === true      
+                         
+                            var vote = getCookie("vote");
+                            alert(vote)
+                            if (vote='true'){  
+                                this.visibleResults = true                           
+                                vote = true
+                            }
                         }
                    ,
                    computed: {  
