@@ -411,11 +411,11 @@
                         }
                    ,
                    computed: {  
-                        Voted(votedText){
-                            alert(votedText);
+                        Voted(Text){
+                            console.log(Text);
                             // let totalVotes = 0
                                 this.answers.filter(a=>{
-                                    if (a.text==votedText)
+                                    if (a.text==Text)
                                     alert("in");
                                     a.selected = true
                                 })
