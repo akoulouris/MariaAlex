@@ -270,18 +270,15 @@
             </div>
          </div> 
          <div id="sector4" style="float: left;width: 100%;" section-scroll="4">
-            <div class="container">
-                <div  class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                      
-                        <div id="poll" class="timer">
-                            <poll>
 
-                            </poll>
-                        </div>
-                    </div>
-                </div>
-            </div>
-               
+                       <div style="margin: 0 auto;max-width:600px;margin-top:60px;padding-left: 20px; padding-right:20px;">
+                            <div id="poll" class="timer">
+                                <poll>
+
+                                </poll>
+                            </div>
+                       </div>
+             
 
         </div>
 
@@ -330,7 +327,7 @@
 
                Vue.component('poll',{
                     template: `<div class="vue-poll">
-                                <h3 class="qst" v-html="question"></h3>
+                                <h1 class="qst" v-html="question"></h1>
      
                                 <div class="ans-cnt">
                                    
@@ -360,14 +357,16 @@
                                     </div>
                               </div>
                               <div class="votes" v-if="visibleResults" v-text="totalVotesFormatted + ' votes'"></div>
-                                 <a href="#" @click.prevent="again" class="submit" >again</a>
+                              <div> <a href="#" v-if="visibleResults" @click.prevent="again" class="submit" >vote again</a></div>
+                              
+                               
                             </div> `
                     ,
                     props: []
                     ,
                     data: function(){
                             return{
-                                question: 'What\'s your favourite <strong>JS</strong> framework?',
+                                question: 'To be married or not?',
                                 answers: [],
                                 // // answers: [
                                 //             { value: 1, text: 'Vue', votes: 53 },
@@ -378,8 +377,7 @@
                                             finalResults: false,
                                             showResults: false,
                                             multiple: false,
-                                            visibleResults:false,
-                                            vote:false
+                                            visibleResults:false
                                             
                             };
                         }
@@ -423,49 +421,49 @@
                             })
                             return totalVotes
                         },                                     
-                    calcAnswers(){
-                        
-                        return this.answers.map(a=>{
-                        //  a.percent = '0%'
-                       // alert(a)
-                       a.percent = ( Math.round( (parseInt(a.votes)/this.totalVotes ) * 100) ) + '%'
+                        calcAnswers(){                       
+                            return this.answers.map(a=>{
 
-                            var vote = getCookie("vote");
-                         //   alert(vote);
-                            var TextVote = getCookie("TextVote");
-                           // alert(TextVote);
-                            if (vote =='true'){  
-                                this.visibleResults = true 
-                                if (a.text==TextVote){
-                                    a.selected  = true   
-                                }
-                                                            
-                            }
+                                a.percent = ( Math.round( (parseInt(a.votes)/this.totalVotes ) * 100) ) + '%'
 
-                            return a
-                        }) 
-                     },
+                                        var vote = getCookie("vote");
+                                        var TextVote = getCookie("TextVote");
+                                        if (vote =='true'){  
+                                            this.visibleResults = true 
+                                            if (a.text==TextVote){
+                                                a.selected  = true   
+                                            }
+                                                                        
+                                        }
+
+                                  return a
+                           }) 
+                        },
+                        totalVotesFormatted(){
+                            return this.totalVotes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        },
                      
-                },
-                methods: 
-                {
-   
-                    handleVote(a){
-                        console.log(a);
-                        a.selected = true
-                        this.visibleResults = true
-                        document.cookie = "vote=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
-                      //  alert(document.cookie)
-                        document.cookie = "TextVote="+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
-                       // alert(document.cookie)
- 
                     },
-                    again(){
-                        this.visibleResults = false
-                    }
+                   methods: 
+                    {  
+                        handleVote(a){
+                            console.log(a);
+                            a.selected = true
+                            this.visibleResults = true
+                            document.cookie = "vote=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+                            document.cookie = "TextVote="+ a.text +"; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+    
+                        },
+                        again(){
+                            this.visibleResults = false
+                                this.answers.forEach(a=>{
+                                    a.selected  = false   
+                                })
+                        }
 
-                }
+                    }
               });
+              
               new Vue({
                   el: "#poll",
                 });
